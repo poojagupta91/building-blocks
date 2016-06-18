@@ -2,8 +2,6 @@ package datastructure;
 
 import java.util.*;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 class TreeNode{
 	int data;
 	TreeNode left,right;
@@ -116,6 +114,39 @@ public class binarSearchTree {
 		}	
 	}
 	
+	// Delete element from tree
+	public static TreeNode deleteElement(TreeNode root,int value){
+	
+		if(root == null)
+			return root;
+		if(value < root.data)
+			root.left = deleteElement(root.left, value);
+		else if(value > root.data)
+			root.right = deleteElement(root.right, value);
+		else {
+			if(root.left == null)
+				return root.right;
+			else if(root.right == null)
+				return root.left;
+			
+			root.data = maxValue(root.left);
+			
+			root.left = deleteElement(root.left,root.data);
+		}
+		 return root;	
+	}
+	
+	// find predecessor of node
+	public static int maxValue(TreeNode node){
+		int max = node.data;
+		while(node.right != null){
+			max = node.right.data;
+			node = node.right;
+		}
+		return max;
+	}
+	
+	
 	public static void main(String arg[]){
 		
 		TreeNode root = null;
@@ -134,6 +165,10 @@ public class binarSearchTree {
 		postOrder(root);
 		System.out.println("");
 		preOrder(root);
+		
+		System.out.println("");
+		root = deleteElement(root, 5);
+		inOrder(root);
 		
 	}
 }
