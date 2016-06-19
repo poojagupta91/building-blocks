@@ -1,27 +1,12 @@
 package datastructure;
 
 import java.util.*;
+import datastructure.TreeNode;
 
-class TreeNode{
-	int data;
-	TreeNode left,right;
-	
-	TreeNode(){
-		this.left = null;
-		this.right = null;
-	}
-	
-	TreeNode(int value){
-		this.data = value;
-		this.left = null;
-		this.right = null;
-	}
-}
-
-public class binarSearchTree {
+public class BinarySearchTree {
 	
 	// Insert node in the tree
-	public static TreeNode insert(TreeNode root,int data){
+	public TreeNode insert(TreeNode root,int data){
 
 		if(root==null){
 			root = new TreeNode(data);
@@ -42,9 +27,11 @@ public class binarSearchTree {
 	}
 	
 	// Print level order nodes in the tree
-	public static void printLevelOrderTree(TreeNode root){
+	public int[] printLevelOrderTree(TreeNode root,int size){
 		Queue<TreeNode> tree = new LinkedList<TreeNode>();
 		TreeNode cur = null;
+		int[] nodes = new int[size];
+		int i=0;
 		if(root==null){
 			System.out.println("Empty Tree");
 		}
@@ -53,16 +40,19 @@ public class binarSearchTree {
 			while(!tree.isEmpty()){
 				cur = tree.remove();
 				System.out.print(cur.data + " ");
+				nodes[i] = cur.data;
+				i++;
 				if(cur.left != null)
 					tree.add(cur.left);
 				if(cur.right != null)
 					tree.add(cur.right);
 			}
 		}
+		return nodes;
 	}
 	
 	// inOrder tree traversal
-	public static void inOrder(TreeNode root){
+	public void inOrder(TreeNode root){
 		if(root != null){
 			inOrder(root.left);
 			System.out.print(root.data + " ");
@@ -71,7 +61,7 @@ public class binarSearchTree {
 	}
 	
 	// postOrder tree traversal
-	public static void postOrder(TreeNode root){
+	public void postOrder(TreeNode root){
 		if(root != null){
 			postOrder(root.left);
 			postOrder(root.right);
@@ -80,7 +70,7 @@ public class binarSearchTree {
 	}
 	
 	// preOrder tree traversal
-	public static void preOrder(TreeNode root){
+	public void preOrder(TreeNode root){
 		if(root != null){
 			System.out.print(root.data + " ");
 			preOrder(root.left);
@@ -88,7 +78,7 @@ public class binarSearchTree {
 		}
 	}
 	// Returns height of the tree
-	public static int treeHeight(TreeNode root){
+	public int treeHeight(TreeNode root){
 		int height = 0;
 		if(root == null)
 			return -1;
@@ -99,7 +89,7 @@ public class binarSearchTree {
 	}
 	
 	// Search an element in tree
-	public static boolean searchElement(TreeNode root,int value){
+	public boolean searchElement(TreeNode root,int value){
 		if(root == null){
 			return false;
 		}
@@ -115,7 +105,7 @@ public class binarSearchTree {
 	}
 	
 	// Delete element from tree
-	public static TreeNode deleteElement(TreeNode root,int value){
+	public TreeNode deleteElement(TreeNode root,int value){
 	
 		if(root == null)
 			return root;
@@ -137,38 +127,12 @@ public class binarSearchTree {
 	}
 	
 	// find predecessor of node
-	public static int maxValue(TreeNode node){
+	public int maxValue(TreeNode node){
 		int max = node.data;
 		while(node.right != null){
 			max = node.right.data;
 			node = node.right;
 		}
 		return max;
-	}
-	
-	
-	public static void main(String arg[]){
-		
-		TreeNode root = null;
-		root = insert(root, 5);
-		root = insert(root, 2);
-		root = insert(root, 7);
-		root = insert(root, 1);
-		root = insert(root, 6);
-		root = insert(root, 3);
-		root = insert(root, 8);
-		
-		printLevelOrderTree(root);
-		System.out.println("");
-		inOrder(root);
-		System.out.println("");
-		postOrder(root);
-		System.out.println("");
-		preOrder(root);
-		
-		System.out.println("");
-		root = deleteElement(root, 5);
-		inOrder(root);
-		
 	}
 }
