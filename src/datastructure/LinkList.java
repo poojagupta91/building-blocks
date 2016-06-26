@@ -32,6 +32,10 @@ public class LinkList{
 			head = node;
 			return head;
 		}
+		if(pos == 0){
+			node.next = head;
+			return node;
+		}
 		else {
 			ptr = head;
 			for(int i=0;i<pos-1;i++){
@@ -69,9 +73,12 @@ public class LinkList{
 		if(head == null){
 			System.out.println("Empty link list");
 		}
+		if(pos == 0){
+		  head = head.next;
+		}
 		else{
 			ptr = head;
-			for(int i=0;i<pos-1;i++){
+			for(int i=0;i<pos;i++){
 				prev = ptr;
 				ptr = ptr.next;
 			}

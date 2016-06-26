@@ -74,14 +74,14 @@ public class TestLinkList {
 		Node head = null;
 		LinkList list = new LinkList();
 		int i = 0;
-		int pos = 2;
-		int ele = 5;
+		int pos = 0;
+		int ele = 3;
 		while(size-->0){
 			head = list.insert(listNodes[i], head);
 			i++;
 		}
 		head = list.insert(ele, pos, head);
-		int[] listNewNodes = {1,2,5,3,4};
+		int[] listNewNodes = {3,1,2,3,4};
 		assertArrayEquals("testInsertIntIntNode ",listNewNodes,list.printList(head, 5));
 	}
 
@@ -123,7 +123,7 @@ public class TestLinkList {
 			i++;
 		}
 		list.delete(head, pos);
-		int[] listNewNodes = {1,2,4};
+		int[] listNewNodes = {1,2,3};
 		assertArrayEquals("testDeleteNodeInt",listNewNodes,list.printList(head,(listNodes.length-1)));
 	}
 }
