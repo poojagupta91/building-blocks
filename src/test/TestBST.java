@@ -97,7 +97,7 @@ public class TestBST {
 	}
 
 	@Test
-	public final void testTreeHeight() {
+	public final void testTreeMaxHeight() {
 		int[] nodes = {3,5,2,1,4,6,7};
 		int size = nodes.length;
 		TreeNode root = null;
@@ -105,7 +105,7 @@ public class TestBST {
 		for(int i=0;i<size;i++){
 			root = tree.insert(root,nodes[i]);
 		}
-		System.out.print("\nHeight of the tree :: " + tree.treeHeight(root));	
+		System.out.println("\nHeight of the tree :: " + tree.treeMaxHeight(root));	
 	}
 
 	@Test
@@ -137,5 +137,142 @@ public class TestBST {
 		System.out.println("\nDelete " + value +" :: ");
 		root = tree.deleteElement(root, value);
 		tree.printLevelOrderTree(root, size-1);	
+	}
+	
+	@Test
+	public final void testTreeSize(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		System.out.println("\nSize of the tree is : " + tree.treeSize(root));
+	}
+	
+	@Test
+	public final void testMinValue(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		System.out.println("\nMininum value node in the tree is : " + tree.minValue(root));
+	}
+	
+	@Test
+	public final void testMaxValue(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		System.out.println("\nMaximum value node in the tree is : " + tree.maxValue(root));
+	}
+	
+	@Test
+	public final void testHasPathSum(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int sum = 10;
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		} 
+		if(tree.hasPathSum(root,sum))
+			System.out.println("\nTree has path of " + sum);
+		else 
+			System.out.println("\nTree does not has path of " + sum);
+	}
+	
+	@Test
+	public final void testPrintPaths(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		System.out.println("\nTree Paths :: ");
+		tree.printPaths(root);
+	}
+	
+	@Test
+	public final void testMirror(){
+		int[] nodes = {3,5,2,1,4,6,7};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		tree.mirror(root);
+		System.out.println("\nMirror Tree :: level order ");
+		tree.printLevelOrderTree(root, size);
+	}
+	
+	@Test
+	public final void testDoubleTree(){
+		int[] nodes = {3,5,2,1};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		tree.doubleTree(root);
+		System.out.println("\nDouble Tree :: level order ");
+		tree.printLevelOrderTree(root, 2*size);
+	}
+	
+	@Test
+	public final void testSameTree(){
+		int[] nodesA = {3,5,2,1};
+		int sizeA = nodesA.length;
+		TreeNode rootA = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<sizeA;i++){
+			rootA = tree.insert(rootA,nodesA[i]);
+		}
+		int[] nodesB = {3,5,2,1};
+		int sizeB = nodesB.length;
+		TreeNode rootB = null;
+		for(int i=0;i<sizeB;i++){
+			rootB = tree.insert(rootB,nodesB[i]);
+		}
+		if(tree.isTreeSame(rootA, rootB))
+			System.out.println("\nTrees are same");
+		else
+			System.out.println("\nTrees are not same");
+	}
+	
+	@Test
+	public final void testCountTree(){
+		BinarySearchTree tree = new BinarySearchTree();
+		int numNodes = 4;
+		System.out.print("\nNumber of trees from " + numNodes + " nodes :: ");
+		System.out.println(tree.countTrees(numNodes));
+	}
+	
+	@Test
+	public final void testIsBST(){
+		int[] nodes = {3,5,2,1};
+		int size = nodes.length;
+		TreeNode root = null;
+		BinarySearchTree tree = new BinarySearchTree();
+		for(int i=0;i<size;i++){
+			root = tree.insert(root,nodes[i]);
+		}
+		if(tree.isBST(root))
+			System.out.println("\nTree is a BST");
+		else
+			System.out.println("\nTree is not a BST");
 	}
 }
