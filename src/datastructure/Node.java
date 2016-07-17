@@ -17,4 +17,8 @@ public class Node<T> {
 		this.data = node;
 		this.next = null;
 	}
+	Node(T node,Node<T> nxt){
+		this.data = node;
+		this.next = nxt;
+	}
 }
