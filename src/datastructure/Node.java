@@ -1,15 +1,19 @@
 package datastructure;
-
-public class Node {
+/**
+ * Node class for link list node
+ * @author POOJA
+ * @implements Generics 
+ */
+public class Node<T> {
 	
-	int data;
-	Node next;
+	T data;
+	Node<T> next;
 	
 	Node(){
-		data = 0;
+		data = null;
 		next = null;
 	}
-	Node(int node){
+	Node(T node){
 		this.data = node;
 		this.next = null;
 	}

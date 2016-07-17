@@ -98,7 +98,7 @@ public class LinkList{
 			int i=0;
 			while(ptr != null){
 				System.out.print(ptr.data + " ");
-				nodes[i]=ptr.data;
+				nodes[i]=(Integer)ptr.data;
 				ptr = ptr.next;
 				i++;
 			}
