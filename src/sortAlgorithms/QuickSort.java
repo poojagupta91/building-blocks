@@ -12,18 +12,18 @@ public class QuickSort {
 	
 	public static int partition(int[] A,int p,int r){
 		int x = A[r-1]; // choosing last element as pivot
-		int i = p-2;
+		int i = p-2;	// p-1
 		int temp;
 		
 		for(int j=p-1;j<r;j++){
 			if(A[j]<=x){
-				i++;
-				temp = A[i];
+				i++; // increase i to keep track of lower elements
+				temp = A[i];  // exchange  A[i] <-> A[j]
 				A[i] = A[j];
 				A[j] = temp;
 			}
 		}
-		temp = A[i+1];
+		temp = A[i+1]; // place pivot at it's position 
 		A[i+1] = A[r-1];
 		A[r-1] = temp;
 		return i+1;
